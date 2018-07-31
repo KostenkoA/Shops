@@ -4,3 +4,7 @@
 homepage:
   path: /
   controller: App\Controller\ProductListController::getProductList
+
+product_preview:
+  path: /product-preview/{id}
+  controller: App\Controller\ProductPreviewController::getProductPreview

@@ -18,15 +18,10 @@ class ProductListController extends AbstractController
             ->getRepository(ProductImage::class)
             ->findAll();
 
-        /*
-        echo '<pre>';
-        var_dump($foto);
-        echo '</pre>';
-        die;
-        */
         return $this->render('homepage/main.html.twig', [
             'products' => $products,
             'productImages' => $productImages
         ]);
     }
+
 }
