@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}ShopS{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+    <div class='wrapper'>
+       <img class="logo" src="./images/Welcome.png" alt=""/>
+    </div>
+
+    <div class='row'>
+        <div class='left_content col'>
+            <p>Silent is Gold</p>
+        </div>
+
+        <div class='main_content col'>
+            {% block main %}{% endblock %}
+        </div>
+
+        <div class='right_content col'>
+            <p>Silent is Gold</p>
+        </div>
+    </div>
+    <div class='footer row'>
+        {% block javascripts %}{% endblock %}
+    </div>
+    </body>
+</html>
