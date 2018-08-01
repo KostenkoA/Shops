@@ -15,14 +15,14 @@ class ProductPreviewController extends AbstractController
             ->find($id)
             ;
 
-        $productImage = $this->getDoctrine()
+        $productImages = $this->getDoctrine()
             ->getRepository(ProductImage::class)
-            ->findOneBy(['productId' => $id])
+            ->findBy(['productId' => $id])
             ;
 
         return $this->render('preview/productPreview.html.twig', [
            'product' => $product,
-           'productImage' => $productImage
+           'productImages' => $productImages
         ]);
     }
 }

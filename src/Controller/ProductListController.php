@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProductListController extends AbstractController
 {
+
     public function getProductList()
     {
         $products = $this->getDoctrine()

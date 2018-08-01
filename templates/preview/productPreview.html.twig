@@ -2,9 +2,11 @@
 {% block main %}
 <div>
     <div class="product_photo photo">
+        {% for productImage in productImages %}
         <div>
-            <img src='{{ productImage.imagePath }}'/>
+            <img src="{{ productImage.imagePath }}"/>
         </div>
+        {% endfor %}
     </div>
     <div class='product_name_edit_row'>
         <div class='product_name col'>
@@ -19,4 +21,5 @@
             <a href='#'>Add Basket</a>
         </div>
     </div>
+</div>
 {% endblock %}
