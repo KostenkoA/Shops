@@ -7,6 +7,18 @@
         <link href="/css/default.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+    <div class='header row'>
+        <ul class="main-menu">
+            <li class="active"><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('basket') }}">Basket</a></li>
+            <li><a href="#">Authorization</a>
+                <ul class="submenu">
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
     <div class='wrapper'>
        <img class="logo" src="/images/Welcome.png" alt=""/>
     </div>
@@ -17,7 +29,7 @@
         </div>
 
         <div class='main_content col'>
-            {% block main %}{% endblock %}
+            {% block mainContent %}{% endblock %}
         </div>
 
         <div class='right_content col'>

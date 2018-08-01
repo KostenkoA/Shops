@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block main %}
+{% block mainContent %}
 <div>
     <div class="product_photo photo">
         {% for productImage in productImages %}
@@ -18,7 +18,7 @@
         </div>
         <div class='product_price'>
             <p><b>Price</b></p>{{ product.price }} $<br><br>
-            <a href='#'>Add Basket</a>
+            <a href="{{ path('add_basket', {'id': product.id}) }}">Add Basket</a>
         </div>
     </div>
 </div>

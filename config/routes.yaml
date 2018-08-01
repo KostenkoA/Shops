@@ -8,3 +8,12 @@ homepage:
 product_preview:
   path: /product-preview/{id}
   controller: App\Controller\ProductPreviewController::getProductPreview
+
+add_basket:
+  path: /basket/{id}
+  controller: App\Controller\BasketController::addProductBasket
+
+basket:
+  path: /basket
+  controller: App\Controller\BasketController::getBasketProducts
+
