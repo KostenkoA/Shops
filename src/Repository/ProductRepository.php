@@ -19,13 +19,20 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function findByFilter()
+
+    public function findByFilter($filter)
     {
         return $this->createQueryBuilder('p')
             ->select('p')
-          //  ->andWhere('p.exampleField = :val')
-         //   ->setParameter('val', $filter)
-            ->orderBy('p.name', 'DESC')
+            ->where(' (p.name LIKE \'%'.$filter->getSearch().'%\' ')
+            ->orWhere('p.comment LIKE \'%'.$filter->getSearch().'%\')')
+         //   ->setParameter(':search', $filter->getSearch())
+            ->andWhere('p.price <= :to')
+            ->setParameter(':to', $filter->getPriceTo())
+            ->andWhere('p.price >= :from')
+            ->setParameter(':from', $filter->getPriceFrom())
+            ->orderBy('p.name', $filter->getNameAscDesc())
+         //   ->addOrderBy('p.name', $filter->getNameAsc())
             ->getQuery()
             ->getResult()
         ;

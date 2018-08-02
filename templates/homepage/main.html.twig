@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block leftContent %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
 
-    {% block mainContent %}
+{% block mainContent %}
         {% for product in products  %}
 <div class='product_list_row'>
 
