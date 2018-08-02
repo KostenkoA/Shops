@@ -17,3 +17,11 @@ basket:
   path: /basket
   controller: App\Controller\BasketController::getBasketProducts
 
+delete_product_basket:
+  path: /basket/delete/{id}
+  controller: App\Controller\BasketController::deleteProductBasket
+
+filter:
+  path: /filter
+  controller: App\Controller\FilterController::create
+

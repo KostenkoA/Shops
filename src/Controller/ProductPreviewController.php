@@ -8,8 +8,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProductPreviewController extends AbstractController
 {
+    /**
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function getProductPreview(int $id)
     {
+        //TODO refactoring
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
             ->find($id)
