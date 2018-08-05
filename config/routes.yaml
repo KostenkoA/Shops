@@ -3,11 +3,11 @@
 #    controller: App\Controller\DefaultController::index
 homepage:
   path: /
-  controller: App\Controller\ProductListController::getProductList
+  controller: App\Controller\ProductController::getProductList
 
 product_preview:
   path: /product-preview/{id}
-  controller: App\Controller\ProductPreviewController::getProductPreview
+  controller: App\Controller\ProductController::getProductPreview
 
 add_basket:
   path: /basket/{id}

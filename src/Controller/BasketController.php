@@ -2,52 +2,44 @@
 
 namespace App\Controller;
 
-use App\Entity\Product;
 use App\Entity\ProductImage;
 use App\Entity\UsersPurchases;
+use App\Service\basket\BasketList;
+use App\Service\basket\BasketListSum;
+use App\Service\Filesystem\PathName;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 
 class BasketController extends AbstractController
 {
-    private $sum;
+
+
     /**
+     * @param BasketList $list
+     * @param BasketListSum $sum
+     * @param PathName $path
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getBasketProducts()
+    public function getBasketProducts(BasketList $list, BasketListSum $sum, PathName $path): Response
     {
         $userPurchases = $this->getDoctrine()
             ->getRepository(UsersPurchases::class)
             ->findBy(['userId' => 1])
             ;
 
-        if (empty($userPurchases)){
-            throw $this->createNotFoundException('Your basket is empty!');
-        }
-
-        foreach ($userPurchases as $userPurchase) {
-
-        $product = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->find($userPurchase->getProductId());
-
-        $this->sum += $product->getPrice();
-
         $productImages = $this->getDoctrine()
-            ->getRepository(ProductImage::class)
-            ->findBy(['productId' => $userPurchase->getProductId()]);
+            ->getRepository(ProductImage::class);
 
-        $basketList[] = [
-            'id' => $product->getId(),
-            'name' => $product->getName(),
-            'price' => $product->getPrice(),
-            'comment' => $product->getComment(),
-            'image' => $productImages[0]->getImagePath(),
-        ];
+        $basketList = $list->usersChoiceList($userPurchases);
+
+        if (empty($basketList)){
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('basket/basketProductsList.html.twig', [
-            'basketList' => $basketList,
-            'sum' => $this->sum
+            'basketProductInfo' => $basketList,
+            'basketProductPhoto' => $path->getNameFile($productImages->findAll()),
+            'sum' => $sum->getSumPurchases($userPurchases),
         ]);
     }
 
@@ -55,7 +47,7 @@ class BasketController extends AbstractController
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function addProductBasket(int $id)
+    public function addProductBasket(int $id): Response
     {
         //TODO add realization for unique product
 
@@ -76,7 +68,7 @@ class BasketController extends AbstractController
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteProductBasket(int $id)
+    public function deleteProductBasket(int $id): Response
     {
         $productBasket = $this->getDoctrine()
             ->getRepository(UsersPurchases::class)

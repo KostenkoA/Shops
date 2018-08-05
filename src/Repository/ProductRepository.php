@@ -20,33 +20,37 @@ class ProductRepository extends ServiceEntityRepository
     }
 
 
-    public function findByFilter($filter)
+    public function findByFilter(object $filter): array
     {
         return $this->createQueryBuilder('p')
             ->select('p')
-            ->where(' (p.name LIKE \'%'.$filter->getSearch().'%\' ')
-            ->orWhere('p.comment LIKE \'%'.$filter->getSearch().'%\')')
-         //   ->setParameter(':search', $filter->getSearch())
+            ->where(' (p.name LIKE :comment ')
+            ->orWhere('p.comment LIKE :comment)')
+            ->setParameter('comment', '%'.$filter->getSearch().'%')
             ->andWhere('p.price <= :to')
-            ->setParameter(':to', $filter->getPriceTo())
+            ->setParameter('to', $filter->getPriceTo())
             ->andWhere('p.price >= :from')
-            ->setParameter(':from', $filter->getPriceFrom())
+            ->setParameter('from', $filter->getPriceFrom())
             ->orderBy('p.name', $filter->getNameAscDesc())
-         //   ->addOrderBy('p.name', $filter->getNameAsc())
             ->getQuery()
             ->getResult()
         ;
     }
 
-    /*
-    public function findOneBySomeField($value): ?Product
+    public function previewFindById(int $id): array
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->select('p, u')
+            ->join(
+                'App\Entity\ProductImage',
+                'u',
+                \Doctrine\ORM\Query\Expr\Join::WITH,
+                'p.id = u.productId'
+            )
+            ->where('p.id ='.$id)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult()
+            ;
     }
-    */
+
 }

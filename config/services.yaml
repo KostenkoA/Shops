@@ -29,3 +29,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    app.basket.basket_list:
+       class: App\Service\basket\BasketList
+
+    app.filesystem.path_name:
+        class: App\Service\Filesystem\PathName
+
+    App\Service\basket\BasketList: '@app.basket.basket_list'
+    App\Service\Filesystem\PathName: '@app.filesystem.path_name'
+
