@@ -14,12 +14,21 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class ProductRepository extends ServiceEntityRepository
 {
+    /**
+     * ProductRepository constructor.
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Product::class);
     }
 
-
+    /**
+     * Generate array of objects products according to the given parameters
+     *
+     * @param object $filter
+     * @return array
+     */
     public function findByFilter(object $filter): array
     {
         return $this->createQueryBuilder('p')
@@ -37,6 +46,12 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * Generate array of objects products and products images from ProductImages entity according to given id
+     *
+     * @param int $id
+     * @return array
+     */
     public function previewFindById(int $id): array
     {
         return $this->createQueryBuilder('p')

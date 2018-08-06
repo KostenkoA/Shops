@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 class ProductController extends AbstractController
 {
     /**
+     * Generate all products list from DB, if defined filter generate filtered list of products
+     *
      * @param Request $request
      * @param PathName $path
      * @return \Symfony\Component\HttpFoundation\Response
@@ -49,6 +51,8 @@ class ProductController extends AbstractController
     }
 
     /**
+     * Generate preview product
+     *
      * @param int $id
      * @param PathName $path
      * @return Response

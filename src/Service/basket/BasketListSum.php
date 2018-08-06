@@ -8,13 +8,26 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class BasketListSum
 {
+    /**
+     * @var EntityManagerInterface
+     */
     private $em;
 
+    /**
+     * BasketListSum constructor.
+     * @param EntityManagerInterface $em
+     */
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }
 
+    /**
+     * getSumPurchases calculate a sum of price products in basket list
+     *
+     * @param array $userPurchases
+     * @return int
+     */
     public function getSumPurchases(array $userPurchases): int
     {
         $sum = 0;

@@ -14,6 +14,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FilterType extends AbstractType
 {
+    /**
+     * Create form filter
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -31,6 +38,11 @@ class FilterType extends AbstractType
             ;
     }
 
+    /**
+     * Sets options resolver
+     *
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

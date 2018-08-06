@@ -4,16 +4,19 @@ namespace App\Service\Filesystem;
 
 class PathName implements FilePathInterface
 {
-
     private $imagePath;
 
+    /**
+     * PathName constructor.
+     * @param $imagePath
+     */
     public function __construct($imagePath)
     {
         $this->imagePath = $imagePath;
     }
 
     /**
-     *
+     *getNameFile method set image path in /images/ directory
      *
      * @param array $nameFiles
      * @return array

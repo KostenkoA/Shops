@@ -15,6 +15,8 @@ class BasketController extends AbstractController
 
 
     /**
+     * Generate basket products list at the users purchases
+     *
      * @param BasketList $list
      * @param BasketListSum $sum
      * @param PathName $path
@@ -46,6 +48,8 @@ class BasketController extends AbstractController
     }
 
     /**
+     * Action add product in basket
+     *
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
@@ -67,6 +71,8 @@ class BasketController extends AbstractController
     }
 
     /**
+     * Action delete product from basket
+     *
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
