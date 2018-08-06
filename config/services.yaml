@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    app.image_path: '/images/'
 
 services:
     # default configuration for services in *this* file
@@ -35,7 +36,12 @@ services:
 
     app.filesystem.path_name:
         class: App\Service\Filesystem\PathName
+        arguments:
+            - '%app.image_path%'
 
     App\Service\basket\BasketList: '@app.basket.basket_list'
+
     App\Service\Filesystem\PathName: '@app.filesystem.path_name'
+
+
 

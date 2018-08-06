@@ -33,7 +33,9 @@ class BasketController extends AbstractController
         $basketList = $list->usersChoiceList($userPurchases);
 
         if (empty($basketList)){
-            return $this->redirectToRoute('homepage');
+            return $this->render('basket/basketProductsList.html.twig', [
+                'message' => 'Your basket is empty!'
+            ]);
         }
 
         return $this->render('basket/basketProductsList.html.twig', [

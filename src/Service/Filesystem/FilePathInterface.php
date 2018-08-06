@@ -2,7 +2,6 @@
 
 namespace App\Service\Filesystem;
 
-
 interface FilePathInterface
 {
     /**

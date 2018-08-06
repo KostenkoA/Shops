@@ -21,13 +21,11 @@ class ProductController extends AbstractController
      */
     public function getProductList(Request $request, PathName $path): Response
     {
-        //TODO move implementation to the repository
+        $doctrine = $this->getDoctrine();
 
-        $products = $this->getDoctrine()
-            ->getRepository(Product::class);
+        $products = $doctrine->getRepository(Product::class);
 
-        $productImages = $this->getDoctrine()
-            ->getRepository(ProductImage::class);
+        $productImages = $doctrine->getRepository(ProductImage::class);
 
         $filter = new Filter();
 

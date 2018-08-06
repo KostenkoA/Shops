@@ -5,9 +5,15 @@ namespace App\Service\Filesystem;
 class PathName implements FilePathInterface
 {
 
+    private $imagePath;
+
+    public function __construct($imagePath)
+    {
+        $this->imagePath = $imagePath;
+    }
+
     /**
-     * FilePathInterface is the interface that should be implemented by classes who want to participate
-     * in the generates path for nameFile in main directory
+     *
      *
      * @param array $nameFiles
      * @return array
@@ -15,9 +21,17 @@ class PathName implements FilePathInterface
     public function getNameFile(array $nameFiles): array
     {
         foreach ($nameFiles as $nameFile){
-            $nameFile->setImagePath(\sprintf('/images/%s',$nameFile->getImagePath()));
+            $nameFile->setImagePath($this->getImagePath().$nameFile->getImagePath());
         }
         return $nameFiles;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImagePath(): string
+    {
+        return $this->imagePath;
     }
 
 }

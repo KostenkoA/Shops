@@ -2,7 +2,11 @@
 
 {% block mainContent %}
     <div>
+
         <div class='basket'>
+            {% if message is defined %}
+            <h2>{{ message }}</h2>
+            {% else %}
                 {% for productInfo in basketProductInfo %}
                     <div class='product_list_row row'>
                         <div class='product_photo col'>
@@ -26,12 +30,12 @@
                         </div>
                     </div>
                 {% endfor %}
+            {% endif %}
         </div>
         <div class='basket_total'>
             <h1>Basket</h1>
             <h2>Your choice:</h2>
-            <b>Total: {{ sum }}$</b>
+            <b>Total: {{ sum|default("0") }} $</b>
         </div>
     </div>
-
 {% endblock %}
