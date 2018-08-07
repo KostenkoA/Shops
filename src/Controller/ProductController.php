@@ -7,7 +7,6 @@ use App\Entity\Product;
 use App\Entity\ProductImage;
 use App\Form\FilterType;
 use App\Service\Filesystem\PathName;
-use Doctrine\DBAL\Schema\View;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

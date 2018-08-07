@@ -24,9 +24,18 @@ class FilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Search', TextType::class, ['label' => 'Search: '])
-            ->add('priceFrom', NumberType::class, ['label' => 'Price from: '])
-            ->add('priceTo', NumberType::class, ['label' => 'Price to: '])
+            ->add('Search', TextType::class, [
+                'label' => 'Search: ',
+                'required' => false
+            ])
+            ->add('priceFrom', NumberType::class, [
+                'label' => 'Price from: ',
+                'required' => false
+            ])
+            ->add('priceTo', NumberType::class, [
+                'label' => 'Price to: ',
+                'required' => false
+            ])
             ->add('nameAscDesc', ChoiceType::class, [
                 'choices' => [
                     'Asc' => 'ASC',

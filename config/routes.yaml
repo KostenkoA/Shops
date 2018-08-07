@@ -25,3 +25,8 @@ filter:
   path: /filter
   controller: App\Controller\FilterController::create
 
+sign_up:
+  path: /sign-up
+  controller: App\controller\UsersController::createRegistrationForm
+
+

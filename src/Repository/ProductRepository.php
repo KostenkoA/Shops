@@ -31,19 +31,26 @@ class ProductRepository extends ServiceEntityRepository
      */
     public function findByFilter(object $filter): array
     {
-        return $this->createQueryBuilder('p')
-            ->select('p')
-            ->where(' (p.name LIKE :comment ')
-            ->orWhere('p.comment LIKE :comment)')
-            ->setParameter('comment', '%'.$filter->getSearch().'%')
-            ->andWhere('p.price <= :to')
-            ->setParameter('to', $filter->getPriceTo())
-            ->andWhere('p.price >= :from')
-            ->setParameter('from', $filter->getPriceFrom())
-            ->orderBy('p.name', $filter->getNameAscDesc())
-            ->getQuery()
-            ->getResult()
-        ;
+        $select = $this->createQueryBuilder('p')
+            ->select('p');
+        switch ($filter){
+            case (!empty($filter->getSearch())):
+                $select->where(' (p.name LIKE :comment ')
+                    ->orWhere('p.comment LIKE :comment)')
+                    ->setParameter('comment', '%'.$filter->getSearch().'%');
+                break;
+            case (!empty($filter->getPriceFrom())):
+                $select->andWhere('p.price >= :from')
+                    ->setParameter('from', $filter->getPriceFrom());
+                break;
+            case (!empty($filter->getPriceTo())):
+                $select->andWhere('p.price <= :to')
+                    ->setParameter('to', $filter->getPriceTo());
+                break;
+        }
+           return $select->orderBy('p.name', $filter->getNameAscDesc())
+                ->getQuery()
+                ->getResult();
     }
 
     /**
