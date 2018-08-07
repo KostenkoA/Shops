@@ -11,7 +11,7 @@
         <ul class="main-menu">
             <li class="active"><a href="{{ path('homepage') }}">Home</a></li>
             <li><a href="{{ path('basket') }}">Basket</a></li>
-            <li><a href="#">Authorization</a>
+            <li><a href="{{ path('profile') }}">Profile</a>
             </li>
         </ul>
     </div>
@@ -29,7 +29,7 @@
         </div>
 
         <div class='right_content col'>
-            <p>Silent is Gold</p>
+            {% block rightContent %}{% endblock %}
         </div>
     </div>
 

@@ -38,14 +38,14 @@ class ProductController extends AbstractController
             return $this->render('homepage/main.html.twig', [
                 'products' => $products->findByFilter($form->getData()),
                 'productImages' => $path->getNameFile($productImages->findAll()),
-                'form' => $form->createView(),
+                'filter' => $form->createView(),
             ]);
         }
 
         return $this->render('homepage/main.html.twig', [
             'products' => $products->findAll(),
             'productImages' => $path->getNameFile($productImages->findAll()),
-            'form' => $form->createView(),
+            'filter' => $form->createView(),
         ]);
     }
 

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block leftContent %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    {{ form_start(filter) }}
+    {{ form_widget(filter) }}
+    {{ form_end(filter) }}
 {% endblock %}
 
 {% block mainContent %}
@@ -37,4 +37,6 @@
         {% endfor %}
     {% endblock %}
 
-
+{% block rightContent %}
+<h2>Silent is GOLD!</h2>
+{% endblock %}
