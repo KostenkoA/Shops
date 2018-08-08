@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Filter;
+use App\Model\Filter;
 use App\Entity\Product;
 use App\Entity\ProductImage;
 use App\Form\FilterType;
@@ -58,7 +58,7 @@ class ProductController extends AbstractController
      */
     public function getProductPreview(int $id, PathName $path): Response
     {
-        //TODO refactoring
+
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
             ->previewFindById($id)

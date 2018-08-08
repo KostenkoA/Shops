@@ -12,6 +12,9 @@ class UsersController extends AbstractController
 {
     public function createRegistrationForm(Request $request)
     {
+
+        // TODO finished module registration users
+
         $user = new Users();
         $form = $this->createForm(UserRegistration::class, $user);
         $form->handleRequest($request);

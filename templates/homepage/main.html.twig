@@ -22,6 +22,9 @@
                 <div class='product_name'>
                     Name: <a href="{{ path('product_preview', {'id': product.id}) }}">{{ product.name }}</a>
                 </div>
+                <div class='product_edit_delete'>
+                    <a href="{{ path('profile_delete', {'id': product.id}) }}">Delete</a>
+                </div>
             </div>
             <div class='product_comment'>
                     Comment: {{ product.comment }}

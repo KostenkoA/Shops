@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class AddProductModel
+class ProductModel
 {
     private $id;
     private $typeId;
@@ -14,6 +14,11 @@ class AddProductModel
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
     public function getImagePath()

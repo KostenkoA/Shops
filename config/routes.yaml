@@ -27,6 +27,14 @@ sign_up:
 
 profile:
   path: /profile
-  controller: App\Controller\AddProductController::addProduct
+  controller: App\Controller\ProfileController::addProduct
+
+profile_edit:
+  path: /profile/edit-product/{id}
+  controller: App\Controller\ProfileController::editProduct
+
+profile_delete:
+  path: /profile/delete/{id}
+  controller: App\Controller\ProfileController::deleteProduct
 
 

@@ -6,7 +6,7 @@
 parameters:
     locale: 'en'
     app.image_path: '/images/'
-    app.upload_image_path: '%kernel.project_dir%/public/uploads/images/'
+    app.upload_image_path: '%kernel.project_dir%/public/images/'
 
 services:
     # default configuration for services in *this* file
@@ -41,9 +41,14 @@ services:
             - '%app.image_path%'
             - '%app.upload_image_path%'
 
+    app.add_product:
+        class: App\Service\profile\AddProduct
+
     App\Service\basket\BasketList: '@app.basket.basket_list'
 
     App\Service\Filesystem\PathName: '@app.filesystem.path_name'
+
+    App\Service\profile\AddProduct: '@app.add_product'
 
 
 

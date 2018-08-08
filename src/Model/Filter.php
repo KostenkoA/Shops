@@ -1,40 +1,13 @@
 <?php
 
-namespace App\Entity;
+namespace App\Model;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity(repositoryClass="App\Repository\FilterRepository")
- */
 class Filter
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $Search;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     *
-     */
     private $priceFrom;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
     private $priceTo;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $nameAscDesc;
 
 

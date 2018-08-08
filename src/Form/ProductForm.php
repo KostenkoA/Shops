@@ -5,7 +5,7 @@ namespace App\Form;
 
 use App\Entity\Product;
 use App\Entity\ProductImage;
-use App\Model\AddProductModel;
+use App\Model\ProductModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -16,8 +16,14 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AddProduct extends AbstractType
+class ProductForm extends AbstractType
 {
+    /**
+     * buildForm for add product
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -49,10 +55,15 @@ class AddProduct extends AbstractType
         ;
     }
 
+    /**
+     * Sets options resolver
+     *
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => AddProductModel::class,
+            'data_class' => ProductModel::class,
         ]);
     }
 

@@ -13,6 +13,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserRegistration extends AbstractType
 {
+    // TODO finished module registration users
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

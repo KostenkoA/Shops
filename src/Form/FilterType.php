@@ -3,7 +3,7 @@
 namespace App\Form;
 
 
-use App\Entity\Filter;
+use App\Model\Filter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -15,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class FilterType extends AbstractType
 {
     /**
-     * Create form filter
+     *buildForm for filter
      *
      * @param FormBuilderInterface $builder
      * @param array $options

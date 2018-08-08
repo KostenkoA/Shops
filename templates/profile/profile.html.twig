@@ -1,7 +1,32 @@
 {% extends 'base.html.twig' %}
 
+{% block leftContent %}
+    <h1>Edit Product</h1>
+{% endblock %}
+
 {% block mainContent %}
+    {% if message is defined %}
+    <div>
+    <h2>{{ message }}</h2>
+        <div class='product_name_edit_row'>
+             <div class='product_name'>
+            <a href="{{ path('profile') }}">Add new product</a>
+             </div>
+             <div class='product_edit_delete'>
+            <a href="{{ path('homepage') }}">Home</a>
+             </div>
+        </div>
+    </div>
+    {% else %}
+<div>
+    <h1>Add product</h1>
     {{ form_start(addProduct) }}
     {{ form_widget(addProduct) }}
     {{ form_end(addProduct) }}
+</div>
+    {% endif %}
+{% endblock %}
+
+{% block rightContent %}
+    <h1>Delete product</h1>
 {% endblock %}
