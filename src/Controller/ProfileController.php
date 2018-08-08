@@ -42,40 +42,7 @@ class ProfileController extends AbstractController
             'addProduct' => $form->createView()
         ]);
     }
-/*
-    public function editProduct(int $id,Request $request): Response
-    {
-        $product = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->previewFindById($id)
-            ;
-        $product =  \array_shift($product);
 
-
-        echo '<pre>';
-        return new Response(var_dump($product));
-        echo '</pre>';
-        die;
-
-        $editProduct = new ProductModel();
-        $editProduct->setId($id);
-        $editProduct->setName($product->getName());
-
-
-        $form = $this->createForm(FormEditProduct::class, $editProduct);
-        $form->handleRequest($request);
-
-
-        if (empty($product)){
-            throw $this->createNotFoundException('Product with ID: '.$id.' not found!');
-        }
-
-
-        return $this->render('profile/edit.html.twig', [
-           'editProduct' => $form->createView()
-        ]);
-    }
-*/
     /**
      * deleteProduct method delete product from DB
      *

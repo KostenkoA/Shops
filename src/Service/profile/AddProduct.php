@@ -16,6 +16,11 @@ class AddProduct
     private $pathName;
     private $newName;
 
+    /**
+     * AddProduct constructor.
+     * @param EntityManagerInterface $em
+     * @param PathName $pathName
+     */
     public function __construct(EntityManagerInterface $em,  PathName $pathName)
     {
         $this->em = $em;
