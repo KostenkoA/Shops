@@ -7,7 +7,6 @@ use App\Entity\Product;
 use App\Entity\ProductImage;
 use App\Service\Filesystem\PathName;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class AddProduct
@@ -48,10 +47,6 @@ class AddProduct
 
     public function upload(UploadedFile $file)
     {
-        try{
-            $file->move($this->pathName->getUploadImagePath(), $this->newName);
-        }catch (FileException $exception){
-            return null;
-        }
+        $file->move($this->pathName->getUploadImagePath(), $this->newName);
     }
 }

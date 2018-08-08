@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Product;
+use App\Entity\ProductImage;
 use App\Form\AddProduct;
 use App\Model\AddProductModel;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,20 +14,22 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AddProductController extends AbstractController
 {
-    public function addProduct(Request $request)
+    public function addProduct(Request $request, \App\Service\profile\AddProduct $addProduct)
     {
-        $product = new AddProductModel();
+        $newProduct = new AddProductModel();
 
-        $form = $this->createForm(AddProduct::class, $product);
+        $form = $this->createForm(AddProduct::class, $newProduct);
         $form->handleRequest($request);
 
 
 
         if ($form->isSubmitted() && $form->isValid()){
-            $product = $form->getData();
+            $newProduct = $form->getData();
+            $addProduct->addItems($newProduct);
+
 
             echo '<pre>';
-            return new Response(var_dump($product));
+            return new Response(var_dump($newProduct));
             echo '</pre>';
             die;
 
