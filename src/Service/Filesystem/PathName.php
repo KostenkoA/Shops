@@ -5,14 +5,17 @@ namespace App\Service\Filesystem;
 class PathName implements FilePathInterface
 {
     private $imagePath;
+    private $uploadImagePath;
 
     /**
      * PathName constructor.
      * @param $imagePath
+     * @param $uploadImagePath
      */
-    public function __construct($imagePath)
+    public function __construct($imagePath, $uploadImagePath)
     {
         $this->imagePath = $imagePath;
+        $this->uploadImagePath = $uploadImagePath;
     }
 
     /**
@@ -35,6 +38,14 @@ class PathName implements FilePathInterface
     public function getImagePath(): string
     {
         return $this->imagePath;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUploadImagePath(): string
+    {
+        return $this->uploadImagePath;
     }
 
 }
