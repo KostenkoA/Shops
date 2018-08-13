@@ -3,7 +3,9 @@
 namespace App\Form;
 
 
+use App\Entity\MainCategory;
 use App\Model\Filter;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -29,21 +31,28 @@ class FilterType extends AbstractType
                 'required' => false
             ])
             ->add('priceFrom', NumberType::class, [
-                'label' => 'Price from: ',
+                'label' => 'PriceFrom: ',
                 'required' => false
             ])
             ->add('priceTo', NumberType::class, [
-                'label' => 'Price to: ',
+                'label' => 'PriceTo: ',
                 'required' => false
             ])
             ->add('nameAscDesc', ChoiceType::class, [
                 'choices' => [
-                    'Asc' => 'ASC',
-                    'Desc' => 'DESC'
+                    'A-Z' => 'ASC',
+                    'Z-A' => 'DESC'
                 ],
-                'label' => 'ASC or DESC: '
+                'label' => 'Name: '
             ])
-             ->add('Filter', SubmitType::class)
+            ->add('typeId', EntityType::class, [
+                'class' => MainCategory::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+                'label_format' => 'Category: '
+            ])
+            ->add('Filter', SubmitType::class)
             ;
     }
 

@@ -33,12 +33,12 @@ class ProductModel
         return $this;
     }
 
-    public function getTypeId(): ?int
+    public function getTypeId()
     {
         return $this->typeId;
     }
 
-    public function setTypeId(int $typeId): self
+    public function setTypeId($typeId)
     {
         $this->typeId = $typeId;
 

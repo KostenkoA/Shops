@@ -33,21 +33,28 @@ class ProductRepository extends ServiceEntityRepository
     {
         $select = $this->createQueryBuilder('p')
             ->select('p');
-        switch ($filter){
-            case (!empty($filter->getSearch())):
+            if (!empty($filter->getSearch())) {
                 $select->where(' (p.name LIKE :comment ')
                     ->orWhere('p.comment LIKE :comment)')
-                    ->setParameter('comment', '%'.$filter->getSearch().'%');
-                break;
-            case (!empty($filter->getPriceFrom())):
+                    ->setParameter('comment', '%' . $filter->getSearch() . '%');
+            }
+            if (!empty($filter->getPriceFrom())) {
                 $select->andWhere('p.price >= :from')
                     ->setParameter('from', $filter->getPriceFrom());
-                break;
-            case (!empty($filter->getPriceTo())):
+            }
+            if (!empty($filter->getPriceTo())) {
                 $select->andWhere('p.price <= :to')
                     ->setParameter('to', $filter->getPriceTo());
-                break;
-        }
+            }
+            if (!empty($filter->getTypeId()->getKeys())){
+                $typeId = '';
+                    foreach ($filter->getTypeId() as $type) {
+                        $typeId .= $type->getId() . ',';
+                    }
+                    $typeId = \rtrim($typeId, ',');
+                    $select->andWhere('p.typeId IN ('.$typeId.')');
+            }
+
            return $select->orderBy('p.name', $filter->getNameAscDesc())
                 ->getQuery()
                 ->getResult();
@@ -63,7 +70,7 @@ class ProductRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('p')
             ->select('p, u')
-            ->join(
+            ->leftJoin(
                 'App\Entity\ProductImage',
                 'u',
                 \Doctrine\ORM\Query\Expr\Join::WITH,

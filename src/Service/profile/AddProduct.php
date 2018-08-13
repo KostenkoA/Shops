@@ -39,7 +39,7 @@ class AddProduct
 
         $product->setName($newProduct->getName());
         $product->setPrice($newProduct->getPrice());
-        $product->setTypeId($newProduct->getTypeId());
+        $product->setTypeId($newProduct->getTypeId()->getId());
         $product->setComment($newProduct->getComment());
         $this->em->persist($product);
         $this->em->flush();
@@ -69,5 +69,32 @@ class AddProduct
         } catch (FileException $e){
             return null;
         }
+    }
+
+    public function updateItem(object $newProduct, $id)
+    {
+
+        $product = $this->em
+            ->getRepository(Product::class)
+            ->find($id);
+
+
+        $product->setName($newProduct->getName());
+        $product->setPrice($newProduct->getPrice());
+        $product->setTypeId($newProduct->getTypeId()->getId());
+        $product->setComment($newProduct->getComment());
+        $this->em->flush();
+
+        foreach ($newProduct->getImagePath() as $image){
+            $productImage = new ProductImage();
+            $productImage->setProductId($id);
+            $productImage->setImagePath($image->getClientOriginalName());
+            $this->em->persist($productImage);
+            $this->em->flush();
+
+            $this->newName = $image->getClientOriginalName();
+            $this->upload($image);
+        }
+
     }
 }

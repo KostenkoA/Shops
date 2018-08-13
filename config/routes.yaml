@@ -33,8 +33,16 @@ profile_edit:
   path: /profile/edit-product/{id}
   controller: App\Controller\ProfileController::editProduct
 
+profile_edit_delete_image:
+  path: /profile/delete-image/{id}
+  controller: App\Controller\ProfileController::deleteProductImage
+
 profile_delete:
   path: /profile/delete/{id}
   controller: App\Controller\ProfileController::deleteProduct
+
+contact:
+  path: /contact
+  controller: App\Controller\ProfileController::contact
 
 

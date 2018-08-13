@@ -22,4 +22,14 @@ class ProductImageRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, ProductImage::class);
     }
+
+    public function findByProductId(int $id): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.productId ='.$id)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

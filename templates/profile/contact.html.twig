@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block mainContent %}
+    <div>
+        <h1>Edit product</h1>
+        {{ form_start(editProduct) }}
+        {{ form_widget(editProduct) }}
+        {{ form_end(editProduct) }}
+    </div>
+{% endblock %}

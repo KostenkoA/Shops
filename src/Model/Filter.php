@@ -9,6 +9,7 @@ class Filter
     private $priceFrom;
     private $priceTo;
     private $nameAscDesc;
+    private $typeId;
 
 
     public function getId()
@@ -62,6 +63,22 @@ class Filter
         $this->nameAscDesc = $nameAscDesc;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTypeId()
+    {
+        return $this->typeId;
+    }
+
+    /**
+     * @param mixed $typeId
+     */
+    public function setTypeId($typeId): void
+    {
+        $this->typeId = $typeId;
     }
 
 }

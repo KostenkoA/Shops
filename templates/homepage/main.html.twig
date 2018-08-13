@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block leftContent %}
+    <h2>Filters:</h2>
     {{ form_start(filter) }}
     {{ form_widget(filter) }}
     {{ form_end(filter) }}
@@ -21,6 +22,9 @@
             <div class='product_name_edit_row'>
                 <div class='product_name'>
                     Name: <a href="{{ path('product_preview', {'id': product.id}) }}">{{ product.name }}</a>
+                </div>
+                <div class='product_edit_delete'>
+                    <a href="{{ path('profile_edit', {'id': product.id}) }}">Edit</a>
                 </div>
                 <div class='product_edit_delete'>
                     <a href="{{ path('profile_delete', {'id': product.id}) }}">Delete</a>
