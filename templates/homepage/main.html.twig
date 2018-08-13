@@ -15,7 +15,7 @@
               <div class='product_photo'>
                   {% for productImage in productImages %}
                       {% if productImage.productID == product.id  %}
-                          <img src='{{ productImage.imagePath }}'/>
+                          <a href="{{ path('product_preview', {'id': product.id}) }}"><img src='{{ productImage.imagePath }}'/></a>
                       {% endif %}
                   {% endfor %}
               </div>

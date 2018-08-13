@@ -22,6 +22,7 @@ class PathName implements FilePathInterface
      *getNameFile method set image path in /images/ directory
      *
      * @param array $nameFiles
+     *
      * @return array
      */
     public function getNameFile(array $nameFiles): array

@@ -64,16 +64,7 @@ class ProductController extends AbstractController
             ->getRepository(Product::class)
             ->previewFindById($id)
         ;
-/*
-        $productImage = $this->getDoctrine()
-            ->getRepository(ProductImage::class)
-            ->findByProductId($id);
 
-        echo '<pre>';
-        return new Response(var_dump($productImage));
-        echo '</pre>';
-        die;
-*/
         if (empty($product)){
             throw $this->createNotFoundException('Product with ID: '.$id.' not found!');
         }

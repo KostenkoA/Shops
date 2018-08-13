@@ -28,14 +28,14 @@
     <div class='product_name_edit_row'>
         <div class='product_name col'>
             <p><b>Name</b></p> {{ product.name }}<br><br>
-            <a href="{{ path('homepage') }}">Back</a>
+            <a href="{{ path('product_preview', {'id': product.id}) }}">Preview</a>
         </div>
         <div class='product_comment'>
             <p><b>Comment</b></p> {{ product.comment }}
         </div>
         <div class='product_price'>
             <p><b>Price</b></p>{{ product.price }} $<br><br>
-            <a href="{{ path('add_basket', {'id': product.id}) }}">Add Basket</a>
+            <a href="{{ path('profile_delete', {'id': product.id}) }}">Delete</a>
         </div>
     </div>
 </div>
@@ -43,6 +43,11 @@
 {% block rightContent %}
 <div>
     <h1>Product Images</h1>
+    {% if messageImage is defined %}
+    <div>
+        <h2>{{ messageImage }}</h2>
+    </div>
+    {% else %}
     <div class="product_photo photo">
         {% for productImage in productImages %}
             <div>
@@ -51,5 +56,6 @@
             </div>
         {% endfor %}
     </div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -31,24 +31,24 @@ class EditProductForm extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Name product: '
+                'label' => 'Set NEW name product: '
             ])
 
             ->add('typeId', EntityType::class, [
                 'class' => MainCategory::class,
                 'choice_label' => 'name',
-                'label' => 'Choice category: '
+                'label' => 'Set NEW category: ',
             ])
 
             ->add('price', IntegerType::class, [
-                'label' => 'Set price: '
+                'label' => 'Set NEW price: '
             ])
             ->add('comment', TextareaType::class, [
-                'label' => 'Comment: ',
+                'label' => 'Set NEW comment: ',
                 'required' => false
             ])
             ->add('imagePath', FileType::class, [
-                'label' => 'Add image: ',
+                'label' => 'Add images: ',
                 'multiple' => true
             ])
             ->add('Edit product', SubmitType::class)
