@@ -38,7 +38,7 @@ class BasketList implements UsersChoiceList
 
             $products = $this->em
                 ->getRepository(Product::class)
-                ->find($userPurchase->getProductId());
+                ->previewFindById($userPurchase->getProductId());
 
             $basketList[] = $products;
         }

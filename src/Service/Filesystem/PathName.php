@@ -28,7 +28,14 @@ class PathName implements FilePathInterface
     public function getNameFile(array $nameFiles): array
     {
         foreach ($nameFiles as $nameFile){
-            $nameFile->setImagePath($this->getImagePath().$nameFile->getImagePath());
+            if (\is_array($nameFile)){
+                foreach ($nameFile as $value){
+                    $value->setImagePath($this->getImagePath().$value->getImagePath());
+                }
+            }
+            else {
+                $nameFile->setImagePath($this->getImagePath() . $nameFile->getImagePath());
+            }
         }
         return $nameFiles;
     }

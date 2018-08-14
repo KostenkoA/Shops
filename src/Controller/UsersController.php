@@ -10,19 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UsersController extends AbstractController
 {
-    public function createRegistrationForm(Request $request)
+    public function admin()
     {
-
-        // TODO finished module registration users
-
-        $user = new Users();
-        $form = $this->createForm(UserRegistration::class, $user);
-        $form->handleRequest($request);
-
-
-        return $this->render('registration/registration.html.twig', [
-            'form' => $form->createView(),
-        ]);
-
+        return $this->render('admin/admin.html.twig');
     }
 }

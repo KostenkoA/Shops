@@ -21,9 +21,9 @@ delete_product_basket:
   path: /basket/delete/{id}
   controller: App\Controller\BasketController::deleteProductBasket
 
-sign_up:
-  path: /sign-up
-  controller: App\controller\UsersController::createRegistrationForm
+admin:
+  path: /admin
+  controller: App\Controller\UsersController::admin
 
 profile:
   path: /profile
@@ -41,8 +41,9 @@ profile_delete:
   path: /profile/delete/{id}
   controller: App\Controller\ProfileController::deleteProduct
 
-contact:
-  path: /contact
-  controller: App\Controller\ProfileController::contact
+login:
+  path: /login
+  controller: App\Controller\SecurityController::login
+
 
 

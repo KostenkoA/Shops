@@ -11,9 +11,11 @@
                     <div class='product_list_row row'>
                         <div class='product_photo col'>
                             {% for productImage in basketProductPhoto %}
-                                {% if productImage.productID == productInfo.id  %}
-                                    <img src='{{ productImage.imagePath }}'/>
-                                {% endif %}
+                                {% for image in productImage %}
+                                    {% if image.productID == productInfo.id  %}
+                                        <img src='{{ image.imagePath }}'/>
+                                    {% endif %}
+                                {% endfor %}
                             {% endfor %}
                         </div>
                         <div class='product_name col'>

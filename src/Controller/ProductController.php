@@ -69,9 +69,19 @@ class ProductController extends AbstractController
             throw $this->createNotFoundException('Product with ID: '.$id.' not found!');
         }
 
+        $productInfo = \array_shift($product);
+        $productImages = $product;
+
+        if (empty($productImages[0])){
+            return $this->render('preview/productPreview.html.twig', [
+                'product' => $productInfo,
+                'messageImage' => 'Your product does not have images!',
+                ]);
+        }
+
         return $this->render('preview/productPreview.html.twig', [
-            'product' => \array_shift($product),
-            'productImages' => $path->getNameFile($product)
+            'product' => $productInfo,
+            'productImages' => $path->getNameFile($productImages)
         ]);
     }
 

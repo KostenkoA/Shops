@@ -29,9 +29,6 @@ class BasketController extends AbstractController
             ->findBy(['userId' => 1])
             ;
 
-        $productImages = $this->getDoctrine()
-            ->getRepository(ProductImage::class);
-
         $basketList = $list->usersChoiceList($userPurchases);
 
         if (empty($basketList)){
@@ -40,11 +37,16 @@ class BasketController extends AbstractController
             ]);
         }
 
-        return $this->render('basket/basketProductsList.html.twig', [
-            'basketProductInfo' => $basketList,
-            'basketProductPhoto' => $path->getNameFile($productImages->findAll()),
+        foreach ($basketList as $list){
+            $productInfo[] = \array_shift($list);
+            $productImages[] = $list;
+        }
+
+        return $this->render('basket/basketProductsList.html.twig', array(
+            'basketProductInfo' => $productInfo,
+            'basketProductPhoto' => $path->getNameFile($productImages),
             'sum' => $sum->getSumPurchases($userPurchases),
-        ]);
+        ));
     }
 
     /**

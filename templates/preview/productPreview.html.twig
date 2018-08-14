@@ -2,11 +2,17 @@
 {% block mainContent %}
 <div>
     <div class="product_photo photo">
+        {% if messageImage is defined %}
+        <div>
+            <h2>{{ messageImage }}</h2>
+        </div>
+        {% else %}
         {% for productImage in productImages %}
         <div>
             <img src="{{ productImage.imagePath }}"/>
         </div>
         {% endfor %}
+        {% endif %}
     </div>
     <div class='product_name_edit_row'>
         <div class='product_name col'>
