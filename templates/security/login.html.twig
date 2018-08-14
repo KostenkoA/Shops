@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block mainContent %}
-{% if error  %}
+{% if error is defined  %}
     <div>
         {{ error.messageKey|trans(error.messageData, 'security') }}
     </div>
 {% endif %}
 <form action = "{{ path('login') }}" method = "post">
-    <label for="username">
+    <label for="user_name">
         Username:
     </label>
-    <input type = "text" id = "username" name = "_username" value="{{ last_username }}" />
+    <input type = "text" id = "_username" name = "_username"  />
 
     <label for = "password">
         Password:
