@@ -7,25 +7,28 @@ use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserRegistration extends AbstractType
+class UserType extends AbstractType
 {
     // TODO finished module admin users
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, [
+            ->add('userName', TextType::class, [
                 'label' => 'Name: '
                 ])
             ->add('email', EmailType::class, [
                 'label' => 'Email: '
             ])
-            ->add('password', PasswordType::class, [
-                'label' => 'password: '
+            ->add('plainPassword', RepeatedType::class, [
+                'type' =>PasswordType::class,
+                'first_options' => ['label' => 'Password'],
+                'second_options' => ['label' => 'Repeat Password'],
             ]);
     }
 
