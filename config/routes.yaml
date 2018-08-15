@@ -21,10 +21,6 @@ delete_product_basket:
   path: /basket/delete/{id}
   controller: App\Controller\BasketController::deleteProductBasket
 
-admin:
-  path: /admin
-  controller: App\Controller\UsersController::admin
-
 profile:
   path: /profile
   controller: App\Controller\ProfileController::addProduct
@@ -45,7 +41,10 @@ login:
   path: /login
   controller: App\Controller\SecurityController::login
 
-reistration:
+logout:
+  path: /logout
+
+registration:
   path: /registration
   controller: App\Controller\RegistrationController::register
 

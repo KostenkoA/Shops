@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class Users implements UserInterface, \Serializable
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -20,7 +20,7 @@ class Users implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=150)
      */
-    private $userName;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -50,6 +50,7 @@ class Users implements UserInterface, \Serializable
     public function __construct()
     {
         $this->isActive = true;
+        $this->roles = ['ROLE_USER'];
     }
 
 
@@ -58,14 +59,14 @@ class Users implements UserInterface, \Serializable
         return $this->id;
     }
 
-    public function getUserName(): ?string
+    public function getUsername(): ?string
     {
-        return $this->userName;
+        return $this->username;
     }
 
-    public function setUserName(string $userName): self
+    public function setUsername(string $username): self
     {
-        $this->userName = $userName;
+        $this->username = $username;
 
         return $this;
     }
@@ -104,7 +105,7 @@ class Users implements UserInterface, \Serializable
     {
         return \serialize(array(
            $this->id,
-           $this->userName,
+           $this->username,
            $this->password,
         ));
     }
@@ -122,7 +123,7 @@ class Users implements UserInterface, \Serializable
     {
         list (
             $this->id,
-            $this->userName,
+            $this->username,
             $this->password
             ) = \unserialize($serialized, array('allowed_classes' => false));
     }

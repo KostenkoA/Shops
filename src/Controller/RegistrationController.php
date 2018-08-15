@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
+use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +12,7 @@ class RegistrationController extends AbstractController
 {
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
-        $user = new Users();
+        $user = new User();
         $formUser = $this->createForm(UserType::class, $user);
 
         $formUser->handleRequest($request);

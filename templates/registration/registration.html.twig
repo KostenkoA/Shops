@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block mainContent %}
+
     {{ form_start(formUser) }}
+    <h1>Registration</h1><br>
     {{ form_row(formUser.userName) }}
     {{ form_row(formUser.email) }}
     {{ form_row(formUser.plainPassword.first) }}

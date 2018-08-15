@@ -23,12 +23,16 @@
                 <div class='product_name'>
                     Name: <a href="{{ path('product_preview', {'id': product.id}) }}">{{ product.name }}</a>
                 </div>
+                {% if is_granted('ROLE_USER') %}
                 <div class='product_edit_delete'>
                     <a href="{{ path('profile_edit', {'id': product.id}) }}">Edit</a>
                 </div>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
                 <div class='product_edit_delete'>
                     <a href="{{ path('profile_delete', {'id': product.id}) }}">Delete</a>
                 </div>
+                {% endif %}
             </div>
             <div class='product_comment'>
                     Comment: {{ product.comment }}

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 
-use App\Entity\Users;
+use App\Entity\User;
 use App\Form\UserRegistration;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
