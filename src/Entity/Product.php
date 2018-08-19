@@ -36,6 +36,11 @@ class Product
      */
     private $comment;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $userId;
+
     public function getId()
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Product
     public function setComment(?string $comment): self
     {
         $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getUserId(): ?int
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?int $userId): self
+    {
+        $this->userId = $userId;
 
         return $this;
     }

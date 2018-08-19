@@ -17,7 +17,7 @@
                     {% endif %}
                 </a></li>
             {% if is_granted('ROLE_USER') %}
-            <li><a href="{{ path('profile') }}">Add New product</a>
+            <li><a href="{{ path('profile_add_product') }}">Add New product</a>
             </li>
             {% endif %}
         </ul>

@@ -38,12 +38,12 @@ class ProfileController extends AbstractController
 
             $addProduct->addItems($newProduct);
 
-            return $this->render('profile/profile.html.twig', [
+            return $this->render('profile/addProduct.html.twig', [
                 'message' => 'Congratulation your product is added!'
             ]);
         }
 
-        return $this->render('profile/profile.html.twig', [
+        return $this->render('profile/addProduct.html.twig', [
             'addProduct' => $form->createView()
         ]);
     }

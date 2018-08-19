@@ -26,7 +26,9 @@ class RegistrationController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('profile', [
+                'userId'=> $user->getId()
+            ]);
         }
 
         return $this->render('registration/registration.html.twig', [

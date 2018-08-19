@@ -10,8 +10,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UsersController extends AbstractController
 {
-    public function admin()
+    public function editUser(int $userId)
     {
-        return $this->render('admin/admin.html.twig');
+        $em = $this->getDoctrine();
+
+        $user = $em->getRepository(User::class)->find($userId);
+
+        return $this->render('profile/user.html.twig', [
+            'userInfo' => $user,
+        ]);
     }
+
+    //TODO
 }
